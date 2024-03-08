@@ -24,3 +24,17 @@ std::string ludivum_util::padStringToMultiple(const std::string &argInStr, const
 size_t ludivum_util::minimum(const size_t &argA, const size_t &argB) {
     return ((argA < argB) ? argA : argB);
 }
+
+
+std::string ludivum_util::toHex(const char* argInput) {
+    std::stringstream rString;
+
+    rString << std::hex << std::setfill('0');
+
+    while (*argInput != '\0') {
+        rString << std::hex << std::setw(2) << (0xFF & static_cast<unsigned>(*argInput));
+        *argInput++;
+    }
+
+    return rString.str();
+}

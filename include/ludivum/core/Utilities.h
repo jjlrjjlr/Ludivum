@@ -7,6 +7,9 @@
 #pragma once
 
 #include <algorithm>
+#include <iomanip>
+#include <iostream>
+#include <sstream>
 #include <string>
 #include <vector>
 
@@ -16,4 +19,6 @@ namespace ludivum_util {
     std::string padStringToMultiple(const std::string &argInStr, const size_t &argTargetMultiple);
 
     size_t minimum(const size_t &argA, const size_t &argB);
+
+    std::string toHex(const char* argInput);
 }
