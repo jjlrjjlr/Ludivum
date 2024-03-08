@@ -27,7 +27,7 @@ std::string ludivum_core::EncryptionHandler::encryptData(const char* argData, co
     size_t keyLength {gcry_cipher_get_algo_keylen(argCipher)};
     size_t blockLength {gcry_cipher_get_algo_blklen(argCipher)};
     size_t cryptLength {argDataLength};
-    std::vector<char> encryptedText (cryptLength, 0);
+    std::string encryptedText (cryptLength, 0);
 
     error = gcry_cipher_open(&handle, argCipher, GCRY_CIPHER_MODE_ECB, 0);
 
@@ -49,7 +49,7 @@ std::string ludivum_core::EncryptionHandler::encryptData(const char* argData, co
 
     gcry_cipher_close(handle);
 
-    return std::string{encryptedText.data()};
+    return encryptedText;
 }
 
 std::string ludivum_core::EncryptionHandler::decryptData(const char* argData, const size_t argDataLength, const char* argKey, size_t argCipher) {
